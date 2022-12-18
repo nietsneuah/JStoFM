@@ -25,6 +25,8 @@ window.loadChart = function (json) {
   //create a variable that contains the json passed by the FM script named loadChart
   const obj = JSON.parse(json);
   console.log(obj);
+
+  // capture the 
   const labels = [
     obj.data[0].label,
     obj.data[1].label,
@@ -40,7 +42,7 @@ window.loadChart = function (json) {
     obj.data[11].label,
   
   ];
-  console.log('labels', labels);
+  console.log('labelsArrayLength', labels.length);
 
 
   // create a variable that contains the value from element "data" an Array from obj(json) 
@@ -91,6 +93,9 @@ window.loadChart = function (json) {
           x: "label" ,
           value: ['cleaning', 'misc', 'pads', 'treatment', 'moth', 'AR sales' ]
         },
+        groups: [
+          ['cleaning', 'misc', 'pads', 'treatment', 'moth'],
+        ],
      },
   };
   

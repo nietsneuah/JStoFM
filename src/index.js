@@ -3,7 +3,7 @@ import c3 from "c3";
 
 // Variables for Month
 const months = [
-  "Jan" + 22,
+  "Jan",
   "Feb",
   "Mar",
   "Apr",
@@ -27,22 +27,22 @@ window.loadChart = function (json) {
   console.log(obj);
 
   // capture the 
-  const labels = [
-    obj.data[0].label,
-    obj.data[1].label,
-    obj.data[2].label,
-    obj.data[3].label,
-    obj.data[4].label,
-    obj.data[5].label,
-    obj.data[6].label,
-    obj.data[7].label,
-    obj.data[8].label,
-    obj.data[9].label,
-    obj.data[10].label,
-    obj.data[11].label,
+  const dateLabels = [
+    obj.data[0].dateLabel,
+    obj.data[1].dateLabel,
+    obj.data[2].dateLabel,
+    obj.data[3].dateLabel,
+    obj.data[4].dateLabel,
+    obj.data[5].dateLabel,
+    obj.data[6].dateLabel,
+    obj.data[7].dateLabel,
+    obj.data[8].dateLabel,
+    obj.data[9].dateLabel,
+    obj.data[10].dateLabel,
+    obj.data[11].dateLabel,
   
   ];
-  console.log('labelsArrayLength', labels.length);
+  console.log('dateLabels', dateLabels.length);
 
 
   // create a variable that contains the value from element "data" an Array from obj(json) 
@@ -66,22 +66,15 @@ window.loadChart = function (json) {
   data: {
     onclick: function(d){
       console.log("data",d);
-      // const index = d.index;
-      // // const name = d.name;
-      // // const value = d.value;
-      // // optional way to define multiple variables that are values of an object
+
       // // is called "deconstruction"
       const {index, id, value} = (d);
       // // console.log("Index", index);
       const month = months[index];
-      const label = labels[index];
-      // const year = 2022;
-      // const year = d.year;
-      // // console.log("Month",month);
-      // // const cleaning = cleaning[index];
-      // // console.log('cleaning', cleaning);
-      // // adding Month: before the const name changes the value of the variable returned to the DOM
-      const newObj = {month, id , value, label};
+      const dateLabel = dateLabels[index];
+      console.log('dateLabel' , dateLabel)
+   
+      const newObj = {month, id , value, dateLabel};
       // console.log("new object", newObj);
       // // Call a FM script (scriptName, @param) in this case passing the data at from onclick event as a new JSON object that is converted to a string (.stringify)
       FileMaker.PerformScript("On Chart Click", JSON.stringify (newObj));
@@ -90,13 +83,14 @@ window.loadChart = function (json) {
     type   : chartType,
     json   :  data,
     keys: {
-          x: "label" ,
-          value: ['cleaning', 'misc', 'pads', 'treatment', 'moth', 'AR sales' ]
+          x: 'dateLabel',
+          value: ['cleaning', 'misc', 'pads', 'treatment', 'moth' ]
         },
         groups: [
           ['cleaning', 'misc', 'pads', 'treatment', 'moth'],
         ],
      },
+     
   };
   
   
@@ -122,10 +116,12 @@ window.loadChart = function (json) {
   // create a variable that contains the value from element "data" an Array from obj(json) 
   const data = obj.data;
   console.log(data);
+
+
   chart.load({
     json: data,
     keys: {
-      x: "label", 
+      x: 'dateLabel', 
       value: ['Location sales']
     },
   })

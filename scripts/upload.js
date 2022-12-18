@@ -1,7 +1,7 @@
 const open = require("open");
 const path = require("path");
 const server = "$";
-const file = "ArsBrosRugCleaing";
+const file = "ArsBrosRugCleaning";
 const uploadScript = "UploadToHTML";
 
 const fileUrl = `fmp://${server}/${file}?script=${uploadScript}&param=`;

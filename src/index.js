@@ -26,6 +26,12 @@ window.loadChart = function (json) {
   const obj = JSON.parse(json);
   console.log(obj);
 
+  // create a variable that contains the value from element "data" an Array from obj(json) 
+  const data = obj.data;
+  // create a variable that contains the value from element "chartType" from obj(json)
+  const chartType = obj.chartType;
+  console.log(chartType);
+  
   // capture the 
   const dateLabels = [
     obj.data[0].dateLabel,
@@ -45,11 +51,7 @@ window.loadChart = function (json) {
   console.log('dateLabels', dateLabels.length);
 
 
-  // create a variable that contains the value from element "data" an Array from obj(json) 
-  const data = obj.data;
-  // create a variable that contains the value from element "chartType" from obj(json)
-  const chartType = obj.chartType;
-  console.log(chartType);
+
 
   // Create variables for chartHeight  chartWidth
   const chartHeight = obj.chartHeight;
@@ -72,7 +74,7 @@ window.loadChart = function (json) {
       // // console.log("Index", index);
       const month = months[index];
       const dateLabel = dateLabels[index];
-      console.log('dateLabel' , dateLabel)
+      console.log('dateLabel' , dateLabel);
    
       const newObj = {month, id , value, dateLabel};
       // console.log("new object", newObj);
